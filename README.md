@@ -1,6 +1,8 @@
 
 ### [Heroku deploy](https://fcc-headerparser-xd.herokuapp.com/)
 
+![image](https://user-images.githubusercontent.com/46557266/132127623-0549e5d6-f69a-4795-ae76-24c2c25c670d.png)
+
 Didn't manage to get an ipv4 IP Address 
 
 
@@ -9,7 +11,7 @@ Didn't manage to get an ipv4 IP Address
 - `/api/whoami` 
 
 ### Example usage
-- [`/api`](https://fcc-headerparser-xd.herokuapp.com/api/whoami)
+- [`/api/whoami`](https://fcc-headerparser-xd.herokuapp.com/api/whoami)
 
 ### Example output
 ```json
