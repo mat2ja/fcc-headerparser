@@ -17,8 +17,25 @@ app.get('/', function (req, res) {
 });
 
 // your first API endpoint...
-app.get('/api/hello', (req, res) => {
-	res.send({ greeting: 'hello API' });
+app.get('/api/whoami', (req, res) => {
+	const ipaddress = req.ip;
+	const langString = req.get('accept-language');
+	const software = req.get('user-agent');
+
+	console.log(langString);
+	const language = langString
+		.split(/[,;]/)
+		.filter((lang) => /.*-.*/.test(lang));
+
+	try {
+		res.send({
+			ipaddress,
+			language,
+			software,
+		});
+	} catch (error) {
+		console.log({ error: error.message });
+	}
 });
 
 const listener = app.listen(PORT, () => {
