@@ -1,6 +1,3 @@
-// server.js
-// where your node app starts
-
 require('dotenv').config();
 var express = require('express');
 var app = express();
@@ -12,20 +9,16 @@ app.use(cors({ optionsSuccessStatus: 200 }));
 
 app.use(express.static('public'));
 
-app.get('/', function (req, res) {
-	res.sendFile(__dirname + '/views/index.html');
-});
+app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
 
-// your first API endpoint...
 app.get('/api/whoami', (req, res) => {
 	const ipaddress = req.ip;
 	const langString = req.get('accept-language');
 	const software = req.get('user-agent');
 
-	console.log(langString);
-	const language = langString
-		.split(/[,;]/)
-		.filter((lang) => /.*-.*/.test(lang));
+	const language =
+		langString?.split(/[,;]/).filter((lang) => /.*-.*/.test(lang)) ??
+		langString;
 
 	try {
 		res.send({
@@ -38,6 +31,6 @@ app.get('/api/whoami', (req, res) => {
 	}
 });
 
-const listener = app.listen(PORT, () => {
-	console.log(`Your app is listening on port ${listener.address().port}`);
-});
+const listener = app.listen(PORT, () =>
+	console.log(`Your app is listening on port ${listener.address().port}`)
+);
